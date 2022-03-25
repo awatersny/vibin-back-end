@@ -13,10 +13,10 @@ const profileSchema = new Schema({
   genres: [{type: Schema.Types.ObjectId, ref:"Genre"}],
   instruments: [{type: Schema.Types.ObjectId, ref:"Instrument"}],
   bands: [{type: Schema.Types.ObjectId, ref:"Band"}],
-  reviews: [{type: Schema.Types.ObjectId, ref:"Listing"}],
+  reviews: [{type: Schema.Types.ObjectId, ref:"Review"}],
   zip: {type: Number, required: true },
-  bselected: [{type: Schema.Types.ObjectId, ref: "Profile"}],
-  brejected: [{type: Schema.Types.ObjectId, ref: "Profile"}],
+  bselected: [{type: Schema.Types.ObjectId, ref: "Band"}],
+  brejected: [{type: Schema.Types.ObjectId, ref: "Band"}],
 
 },{
     timestamps: true,
