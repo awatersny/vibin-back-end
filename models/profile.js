@@ -14,10 +14,9 @@ const profileSchema = new Schema({
   instruments: [{type: Schema.Types.ObjectId, ref:"Instrument"}],
   bands: [{type: Schema.Types.ObjectId, ref:"Band"}],
   reviews: [{type: Schema.Types.ObjectId, ref:"Review"}],
-  zip: {type: Number, required: true },
+  zip: {type: String, required: true },
   bselected: [{type: Schema.Types.ObjectId, ref: "Band"}],
-  brejected: [{type: Schema.Types.ObjectId, ref: "Band"}],
-
+  brejected: [{type: Schema.Types.ObjectId, ref: "Band"}]
 },{
     timestamps: true,
 })
