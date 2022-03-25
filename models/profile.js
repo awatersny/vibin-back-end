@@ -2,12 +2,14 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+
+//genre and instruments resources
+
 const profileSchema = new Schema({
   name: {type: String, required: true},
   email: {type: String, required: true, lowercase: true, unique: true},
   avatar: {type: String, default: 'blank-avatar (insert default avatar here'},
   role: {type: Number, min: 100, max: 900, default: 100},
-  instruments: String, //[...Strings] ,
   bands: [{type: Schema.Types.ObjectId, ref:"Band"}],
   reviews: [{type: Schema.Types.ObjectId, ref:"Listing"}],
   zip: {type: Number, required: true },
