@@ -9,6 +9,6 @@ const router = Router()
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-
+router.get('/', checkAuth, genresCtrl.index)
 
 export { router }
