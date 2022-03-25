@@ -1,15 +1,18 @@
 import mongoose from 'mongoose'
 
-const profileSchema = new mongoose.Schema({
-  email: {type: String, required: true, lowercase: true, unique: true},
+const Schema = mongoose.Schema
+
+const profileSchema = new Schema({
   name: {type: String, required: true},
-  avatar: {type:String, default: 'blank-avatar (insert default avatar here'},
+  email: {type: String, required: true, lowercase: true, unique: true},
+  avatar: {type: String, default: 'blank-avatar (insert default avatar here'},
+  role: {type: Number, min: 100, max: 900, default: 100},
   instruments: String, //[...Strings] ,
-  // bands: (Objectid ref:"bands"),
-  // reviews: (ObjectIds ref:'reviews'),
+  bands: [{type: Schema.Types.ObjectId, ref:"Band"}],
+  reviews: [{type: Schema.Types.ObjectId, ref:"Listing"}],
   zip: {type: Number, required: true },
-  // bselected: [ObjectIds ref: 'band'],
-  // brejected: [ObjectIds ref: 'band'],
+  bselected: [{type: Schema.Types.ObjectId, ref: "Profile"}],
+  brejected: [{type: Schema.Types.ObjectId, ref: "Profile"}],
 
 },{
     timestamps: true,
@@ -17,4 +20,6 @@ const profileSchema = new mongoose.Schema({
 
 const Profile = mongoose.model('Profile', profileSchema)
 
-export {Profile}
+export {
+  Profile
+}
