@@ -11,7 +11,7 @@ const bandSchema = new Schema({
   members: [{type: Schema.Types.ObjectId, ref:"Profile"}],
   size: Number,
   reviews: [{type: Schema.Types.ObjectId, ref:"Review"}],
-  zip: {type: Number, required: true },
+  zip: {type: String, required: true },
   pselected: [{type: Schema.Types.ObjectId, ref: "Profile"}],
   prejected: [{type: Schema.Types.ObjectId, ref: "Profile"}],
 
