@@ -3,8 +3,6 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 
-//genre and instruments resources
-
 const reviewSchema = new Schema({
   title: {type:String, required: true},
   content: {type:String, required: true},

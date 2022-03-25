@@ -5,6 +5,11 @@ import cors from 'cors'
 
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from './routes/auth.js'
+import { router as bandsRouter } from './routes/bands.js'
+import { router as genresRouter } from './routes/genres.js'
+import { router as instrumentsRouter } from './routes/instruments.js'
+import { router as reviewsRouter } from './routes/reviews.js'
+
 
 import('./config/database.js')
 
@@ -16,6 +21,10 @@ app.use(express.json())
 
 app.use('/api/profiles', profilesRouter)
 app.use('/api/auth', authRouter)
+app.use('/api/bands', bandsRouter)
+app.use('/api/genres', genresRouter)
+app.use('/api/instruments', instrumentsRouter)
+app.use('/api/reviews', reviewsRouter)
 
 app.use(function (req, res, next) {
   res.status(404).json({ err: "Not found" })

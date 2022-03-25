@@ -7,7 +7,7 @@ const Schema = mongoose.Schema
 
 const instrumentSchema = new Schema({
   name: {type: String, required: true},
-  tag: {type: String, required: true, enum: [percussion, string, wind, voice] }
+  tag: {type: String, required: true, enum: ['percussion', 'string', 'wind', 'voice'] }
 },{
     timestamps: true,
 })
