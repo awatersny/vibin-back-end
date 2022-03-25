@@ -7,7 +7,7 @@ const profileSchema = new mongoose.Schema({
   instruments: String, //[...Strings] ,
   // bands: (Objectid ref:"bands"),
   // reviews: (ObjectIds ref:'reviews'),
-  zip: {type: Number, required: true },
+  zip: {type: String, required: true },
   status: {type: String, required: true },
   // bselected: [ObjectIds ref: 'band'],
   // brejected: [ObjectIds ref: 'band'],
