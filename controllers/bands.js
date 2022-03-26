@@ -9,6 +9,16 @@ function index(req,res){
   })
 }
 
+function create(req, res) {
+  Band.create(req.body)
+  .then(band => res.json(band))
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
 export {
-  index
+  index,
+  create
 }
