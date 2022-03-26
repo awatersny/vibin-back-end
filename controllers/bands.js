@@ -1,4 +1,5 @@
 import { Band } from '../models/band.js'
+import {v2 as cloudinary} from 'cloudinary'
 
 function index(req,res){
   Band.find({})
