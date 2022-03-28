@@ -14,7 +14,7 @@ function create(req, res) {
   req.body.owner = req.user.profile
   if (req.body.avatar === 'undefined' || !req.files['avatar']) {
     delete req.body['avatar']
-   Profile.create(req.body)
+    Profile.create(req.body)
     .then(profile => {
       profile.populate('owner')
       .then(populatedProfile => {
