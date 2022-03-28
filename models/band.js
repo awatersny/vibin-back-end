@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const bandSchema = new Schema({
   name: {type: String, required: true},
+  photo: {type: String, default: 'blank-avatar (insert default avatar here'},
   role: {type: Number, min: 100, max: 900, default: 100},
   genres: [{type: Schema.Types.ObjectId, ref:"Genre"}],
   creator: {type: Schema.Types.ObjectId, ref:"Profile"},
