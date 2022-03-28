@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const genreSchema = new Schema({
   name: {type: String, required: true},
-  tag:{type: String, require: true},
+  tag: {type: String, required: true},
 },{
     timestamps: true,
 })

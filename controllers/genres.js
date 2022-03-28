@@ -9,6 +9,20 @@ function index(req,res){
   })
 }
 
+function create(req,res) {
+  console.log(req.body)
+  Genre.create(req.body)
+  .then(genre => {
+    console.log(genre)
+    res.status(201).json(genre)
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
 export {
-  index
+  index,
+  create,
 }
