@@ -1,4 +1,5 @@
 import { Instrument } from '../models/instrument.js'
+import { Profile } from '../models/profile.js'
 
 function index(req,res){
   Instrument.find({})
@@ -10,15 +11,20 @@ function index(req,res){
 }
 
 function create(req,res) {
-  console.log(req.body)
-  Instrument.create(req.body)
-  .then(instrument => {
-    console.log(instrument)
-    res.status(201).json(instrument)
-  })
-  .catch(err => {
-    console.log(err)
-    res.status(500).json(err)
+  Profile.findById(req.user.profile)
+  .then(profile => {
+    if(profile.role === 900){
+      Instrument.create(req.body)
+      .then(instrument => {
+        res.status(201).json(instrument)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).json(err)
+      })
+    }else{
+      res.status(401).json('Not Authorized')
+    }
   })
 }
 
