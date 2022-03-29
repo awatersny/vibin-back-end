@@ -10,6 +10,7 @@ const profileSchema = new Schema({
   email: {type: String, required: true, lowercase: true, unique: true},
   photo: {type: String, default: 'blank-avatar (insert default avatar here'},
   role: {type: Number, min: 100, max: 900, default: 100},
+  bio: {type: String },
   genres: [{type: Schema.Types.ObjectId, ref:"Genre"}],
   // instruments: [{type: Schema.Types.ObjectId, ref:"Instrument"}],
   bands: [{type: Schema.Types.ObjectId, ref:"Band"}],
