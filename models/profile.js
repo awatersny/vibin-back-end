@@ -8,7 +8,7 @@ const Schema = mongoose.Schema
 const profileSchema = new Schema({
   name: {type: String, required: true},
   email: {type: String, required: true, lowercase: true, unique: true},
-  avatar: {type: String, default: 'blank-avatar (insert default avatar here'},
+  avatar: {type: String, default: 'https://i0.wp.com/sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png?w=300&ssl=1'},
   role: {type: Number, min: 100, max: 900, default: 100},
   genres: [{type: Schema.Types.ObjectId, ref:"Genre"}],
   // instruments: [{type: Schema.Types.ObjectId, ref:"Instrument"}],
