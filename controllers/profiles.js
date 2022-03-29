@@ -45,4 +45,10 @@ function create(req, res) {
   }
 }
 
+function show(req, res) {
+  Profile.findById(req.params.id)
+  .then(profile => res.json(profile))
+  .catch(err => res.json(err))
+}
+
 export { index }
