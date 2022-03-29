@@ -9,6 +9,7 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, instrumentsCtrl.index)
+router.get('/:id', instrumentsCtrl.show)
 router.post('/', checkAuth, instrumentsCtrl.create)
 
 
