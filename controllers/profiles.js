@@ -51,4 +51,4 @@ function show(req, res) {
   .catch(err => res.json(err))
 }
 
-export { index }
+export { index, show }
