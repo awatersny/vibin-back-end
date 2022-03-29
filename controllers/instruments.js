@@ -29,7 +29,7 @@ function create(req,res) {
 }
 
 function show(req, res){
-  console.log(req.params)
+  console.log(req.params, 'req.params line 32')
   // Instrument.findById(req)
 }
 

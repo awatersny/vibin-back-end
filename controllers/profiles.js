@@ -47,6 +47,9 @@ function create(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
+    .populate('instruments')
+    .populate('reviews')
+    .populate('genres')
   .then(profile => res.json(profile))
   .catch(err => res.json(err))
 }
