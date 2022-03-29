@@ -28,7 +28,14 @@ function create(req,res) {
   })
 }
 
+function show(req, res){
+  console.log(req.params)
+  // Instrument.findById(req)
+}
+
+
 export {
   index,
-  create
+  create,
+  show
 }
