@@ -12,12 +12,16 @@ function index(req,res){
 }
 
 function create(req, res) {
-  req.body.creator = req.body.user
-  Profile.findById(req.params.id)
+  req.body.creator = req.user.profile
+  console.log('req.body', req.body)
+  console.log('creator', req.user.profile)
+  Profile.findById(req.user.profile)
   .then(profile => {
     Band.create(req.body)
     .then(band => {
+      console.log(profile)
       profile.bands.push(band)
+      profile.save()
       return res.json(band)
     })
     .catch(err => {
