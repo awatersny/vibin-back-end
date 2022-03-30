@@ -46,9 +46,8 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  console.log(req.params)
   Profile.findById(req.params.id)
-    .populate('instruments')
+    // .populate('instruments')
     .populate('reviews')
     .populate('genres')
   .then(profile => res.json(profile))
@@ -65,4 +64,14 @@ function updateInstruments(req,res) {
   .catch(err => res.json(err))
 }
 
-export { index, show, updateInstruments }
+function updateGenres(req,res) {
+  Profile.findById(req.user.profile)
+  .then(profile => {
+    profile.genres.push(req.body.id)
+    profile.save()
+  })
+  .then(profile => res.status(200).json(profile))
+  .catch(err => res.json(err))
+}
+
+export { index, show, updateInstruments, updateGenres }
