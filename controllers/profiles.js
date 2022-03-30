@@ -58,9 +58,7 @@ function show(req, res) {
 function updateInstruments(req,res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    console.log(profile)
-    console.log(req.body, 'req.body');
-    profile.instruments.push(req.body)
+    profile.instruments.push(req.body.id)
     profile.save()
   })
   .then(profile => res.status(200).json(profile))
