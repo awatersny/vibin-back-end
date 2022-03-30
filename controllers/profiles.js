@@ -46,12 +46,25 @@ function create(req, res) {
 }
 
 function show(req, res) {
+  console.log(req.params)
   Profile.findById(req.params.id)
-    // .populate('instruments')
+    .populate('instruments')
     .populate('reviews')
     .populate('genres')
   .then(profile => res.json(profile))
   .catch(err => res.json(err))
 }
 
-export { index, show }
+function updateInstruments(req,res) {
+  Profile.findById(req.user.profile)
+  .then(profile => {
+    console.log(profile)
+    console.log(req.body, 'req.body');
+    profile.instruments.push(req.body)
+    profile.save()
+  })
+  .then(profile => res.status(200).json(profile))
+  .catch(err => res.json(err))
+}
+
+export { index, show, updateInstruments }

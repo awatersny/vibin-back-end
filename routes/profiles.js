@@ -10,5 +10,6 @@ router.get('/:id', profilesCtrl.show)
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
+router.patch('/:id', profilesCtrl.updateInstruments)
 
 export { router }

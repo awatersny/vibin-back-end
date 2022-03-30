@@ -12,7 +12,7 @@ const profileSchema = new Schema({
   role: {type: Number, min: 100, max: 900, default: 100},
   bio: {type: String },
   genres: [{type: Schema.Types.ObjectId, ref:"Genre"}],
-  // instruments: [{type: Schema.Types.ObjectId, ref:"Instrument"}],
+  instruments: [{type: Schema.Types.ObjectId, ref:"Instrument"}],
   bands: [{type: Schema.Types.ObjectId, ref:"Band"}],
   reviews: [{type: Schema.Types.ObjectId, ref:"Review"}],
   zip: {type: String, required: true },
