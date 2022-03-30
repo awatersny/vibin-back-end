@@ -47,14 +47,14 @@ function create(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
-    // .populate('instruments')
+    .populate('instruments')
     .populate('reviews')
     .populate('genres')
   .then(profile => res.json(profile))
   .catch(err => res.json(err))
 }
 
-function updateInstruments(req,res) {
+function addInstruments(req,res) {
   Profile.findById(req.user.profile)
   .then(profile => {
     profile.instruments.push(req.body.id)
@@ -64,7 +64,7 @@ function updateInstruments(req,res) {
   .catch(err => res.json(err))
 }
 
-function updateGenres(req,res) {
+function addGenres(req,res) {
   Profile.findById(req.user.profile)
   .then(profile => {
     profile.genres.push(req.body.id)
@@ -74,4 +74,13 @@ function updateGenres(req,res) {
   .catch(err => res.json(err))
 }
 
-export { index, show, updateInstruments, updateGenres }
+function deleteInstrument(req,res) {
+  Profile.findById(req.user.profile)
+  .then(profile => {
+    profile.instruments.remove(req.params.id)
+    res.status(200).json(profile)
+  })
+  .catch(err => res.json(err))
+}
+
+export { index, show, addInstruments, addGenres, deleteInstrument }

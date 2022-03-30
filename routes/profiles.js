@@ -10,7 +10,8 @@ router.get('/:id', profilesCtrl.show)
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
-router.patch('/:id/instruments', profilesCtrl.updateInstruments)
-router.patch('/:id/genres', profilesCtrl.updateGenres)
+router.patch('/:id/instruments', profilesCtrl.addInstruments)
+router.patch('/:id/genres', profilesCtrl.addGenres)
+router.delete('/:id/instruments/:id', profilesCtrl.deleteInstrument)
 
 export { router }
