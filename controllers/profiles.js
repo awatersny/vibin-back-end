@@ -77,7 +77,8 @@ function addGenres(req,res) {
 function deleteInstrument(req,res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    profile.instruments.remove(req.params.id)
+    profile.instruments.remove({_id: req.params.id})
+    profile.save()
     res.status(200).json(profile)
   })
   .catch(err => res.json(err))
