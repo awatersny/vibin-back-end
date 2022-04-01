@@ -102,7 +102,7 @@ function deleteInstrument(req,res) {
 function deleteGenre(req,res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    profile.genres.remove({_id: req.params.id})
+    profile.genres.remove({_id: req.params.genreId})
     profile.save()
     .then(savedProfile => {
       savedProfile.populate(['instruments', 'reviews', 'genres'])
