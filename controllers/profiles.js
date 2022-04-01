@@ -59,9 +59,9 @@ function addInstruments(req,res) {
   .then(profile => {
     profile.instruments.push(req.params.instrumentId)
     profile.save()
-    .then(savedProfile=>{
+    .then(savedProfile => {
       savedProfile.populate(['instruments', 'reviews', 'genres'])
-      .then(populatedProfile=>{
+      .then(populatedProfile => {
         res.status(200).json(populatedProfile)
       })
     })
@@ -72,10 +72,15 @@ function addInstruments(req,res) {
 function addGenres(req,res) {
   Profile.findById(req.user.profile)
   .then(profile => {
-    profile.genres.push(req.body.id)
+    profile.genres.push(req.params.genreId)
     profile.save()
+    .then(savedProfile => {
+      savedProfile.populate(['instruments', 'reviews', 'genres'])
+      .then(populatedProfile => {
+        res.status(200).json(populatedProfile)
+      })
+    })
   })
-  .then(profile => res.status(200).json(profile))
   .catch(err => res.json(err))
 }
 
@@ -99,9 +104,13 @@ function deleteGenre(req,res) {
   .then(profile => {
     profile.genres.remove({_id: req.params.id})
     profile.save()
-    res.status(200)
+    .then(savedProfile => {
+      savedProfile.populate(['instruments', 'reviews', 'genres'])
+      .then(populatedProfile => {
+        res.status(200).json(populatedProfile)
+      })
+    })
   })
-  .then(profile => res.json(profile))
   .catch(err => res.json(err))
 }
 
