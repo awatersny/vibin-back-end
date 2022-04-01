@@ -11,8 +11,8 @@ router.get('/:id', profilesCtrl.show)
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
 router.patch('/:profileId/instruments/:instrumentId', profilesCtrl.addInstruments)
-router.patch('/:id/genres', profilesCtrl.addGenres)
+router.patch('/:profileId/genres/:genreId', profilesCtrl.addGenres)
 router.delete('/:id/instruments/:instrumentId', profilesCtrl.deleteInstrument)
-router.delete('/:id/genres/:id', profilesCtrl.deleteGenre)
+router.delete('/:profileId/genres/:genreId', profilesCtrl.deleteGenre)
 
 export { router }
