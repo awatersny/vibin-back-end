@@ -3,6 +3,7 @@ import {v2 as cloudinary} from 'cloudinary'
 
 function index(req, res) {
   Profile.find({})
+  .populate(['instruments', 'reviews', 'genres' ])
   .then(profiles => res.json(profiles))
   .catch(err => {
     console.log(err)
@@ -47,9 +48,9 @@ function create(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
-    .populate('instruments')
-    .populate('reviews')
-    .populate('genres')
+  .populate('instruments')
+  .populate('reviews')
+  .populate('genres')
   .then(profile => res.json(profile))
   .catch(err => res.json(err))
 }
